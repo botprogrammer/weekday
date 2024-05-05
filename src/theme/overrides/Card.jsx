@@ -2,10 +2,12 @@
 
 export default function Card() {
   return {
-    MuiCardContent: {
+    MuiCard: {
       styleOverrides: {
         root: {
-          padding: 20
+          padding: 8,
+          boxShadow: 'rgba(0, 0, 0, 0.25) 0px 1px 4px 0px',
+          borderRadius: '20px'
         }
       }
     }

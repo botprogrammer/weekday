@@ -1,10 +1,12 @@
 import { Autocomplete, Grid, TextField } from '@mui/material'
-
-const options = [
-  { label: 'a', value: 'a' },
-  { label: 'b', value: 'b' },
-  { label: 'c', value: 'c' }
-]
+import {
+  EXPERIENCE,
+  LOCATION,
+  MINIMUM_BASE_PAY,
+  REMOTE,
+  ROLES,
+  TECH_STACK
+} from '../constants/filters'
 
 export default function Navbar() {
   return (
@@ -13,12 +15,11 @@ export default function Navbar() {
         sx={{
           width: 'fit-content',
           '& .MuiInputBase-input': {
-            width: '3rem !important'
+            width: '6rem !important'
           }
         }}
-        onChange={(a, b) => console.log({ a, b })}
         multiple
-        options={options}
+        options={ROLES}
         getOptionLabel={(option) => option.label}
         renderInput={(params) => <TextField {...params} placeholder='Roles' />}
       />
@@ -27,14 +28,28 @@ export default function Navbar() {
         sx={{
           width: 'fit-content',
           '& .MuiInputBase-input': {
-            width: '12rem !important'
+            width: '6rem !important'
           }
         }}
         multiple
-        options={options}
-        getOptionLabel={(option) => option.title}
+        options={TECH_STACK}
+        getOptionLabel={(option) => option.label}
         renderInput={(params) => (
-          <TextField {...params} placeholder='Number Of Employees' />
+          <TextField {...params} placeholder='Tech Stack' />
+        )}
+      />
+
+      <Autocomplete
+        sx={{
+          width: 'fit-content',
+          '& .MuiInputBase-input': {
+            width: '6rem !important'
+          }
+        }}
+        options={EXPERIENCE}
+        getOptionLabel={(option) => option.label}
+        renderInput={(params) => (
+          <TextField {...params} placeholder='Experience' />
         )}
       />
 
@@ -46,10 +61,10 @@ export default function Navbar() {
           }
         }}
         multiple
-        options={options}
-        getOptionLabel={(option) => option.title}
+        options={LOCATION}
+        getOptionLabel={(option) => option.label}
         renderInput={(params) => (
-          <TextField {...params} placeholder='Experience' />
+          <TextField {...params} placeholder='Location' />
         )}
       />
 
@@ -58,13 +73,15 @@ export default function Navbar() {
           width: 'fit-content',
 
           '& .MuiInputBase-input': {
-            width: '5rem !important'
+            width: '8rem !important'
           }
         }}
         multiple
-        options={options}
-        getOptionLabel={(option) => option.title}
-        renderInput={(params) => <TextField {...params} placeholder='Remote' />}
+        options={REMOTE}
+        getOptionLabel={(option) => option.label}
+        renderInput={(params) => (
+          <TextField {...params} placeholder='Remote/In-office' />
+        )}
       />
 
       <Autocomplete
@@ -75,9 +92,8 @@ export default function Navbar() {
           }
         }}
         size='small'
-        multiple
-        options={options}
-        getOptionLabel={(option) => option.title}
+        options={MINIMUM_BASE_PAY}
+        getOptionLabel={(option) => option.label}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -86,6 +102,12 @@ export default function Navbar() {
             sx={{ fontSize: 4 }}
           />
         )}
+      />
+
+      <TextField
+        size='small'
+        placeholder='Search company name'
+        sx={{ border: '1px solid grey', borderRadius: 1 }}
       />
     </Grid>
   )

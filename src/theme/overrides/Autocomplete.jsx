@@ -41,6 +41,10 @@ export default function Autocomplete() {
 
           '& .MuiAutocomplete-endAdornment .MuiButtonBase-root': {
             padding: 2
+          },
+
+          '& .MuiTextField-root.MuiFormControl-root': {
+            border: 'none !important'
           }
         }
       }

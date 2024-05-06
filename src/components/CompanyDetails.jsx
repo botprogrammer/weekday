@@ -7,10 +7,10 @@ export default function CompanyDetails({ data }) {
     data
   return (
     <Box className='company_info' my={2}>
-      <Grid container gap={2}>
+      <Grid container gap={2} alignItems='center'>
         <img
           alt={`${companyName} logo`}
-          style={{ width: '5rem', height: '5rem' }}
+          style={{ width: '4rem', height: '4rem' }}
           src={logoUrl}
         />
         <Box>

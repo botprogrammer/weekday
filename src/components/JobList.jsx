@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import { Grid } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import JobCard from './JobCard'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import Loader from './Loader'
 
 export default function JobList({ jobData, getData }) {
   return (
@@ -10,12 +11,12 @@ export default function JobList({ jobData, getData }) {
       dataLength={jobData.jobs.length}
       next={getData}
       hasMore={jobData.totalCount > jobData.jobs.length}
-      loader={<h4>Loading...</h4>}
+      loader={<Loader />}
       scrollThreshold={1}
       endMessage={
-        <p style={{ textAlign: 'center' }}>
+        <Typography fontWeight={700}>
           <b>Yay! You have seen it all</b>
-        </p>
+        </Typography>
       }
     >
       <Grid container spacing={4} py={4}>

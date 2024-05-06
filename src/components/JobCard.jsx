@@ -41,7 +41,9 @@ export default function JobCard({ data }) {
           <Button variant='contained'>
             <LightningIcon /> <Typography ml={1}>Easy Apply</Typography>
           </Button>
-          <Button variant='outlined'>Unlock referral asks</Button>
+          <Button variant='outlined'>
+            <Typography>Unlock referral asks</Typography>
+          </Button>
         </Grid>
       </CardActions>
     </Card>

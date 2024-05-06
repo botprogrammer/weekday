@@ -5,6 +5,7 @@ import { Box } from '@mui/material'
 import Filters from '../components/Filters'
 import JobList from '../components/JobList'
 import axios from 'axios'
+import Loader from '../components/Loader'
 
 export default function Home() {
   const [jobData, setJobData] = useState({ jobs: [], totalCount: 0 })
@@ -35,9 +36,12 @@ export default function Home() {
   return (
     <Box className='main' sx={{ p: 4 }}>
       <Filters />
+
       {jobData.jobs.length ? (
         <JobList jobData={jobData} getData={getData} />
-      ) : null}
+      ) : (
+        <Loader />
+      )}
     </Box>
   )
 }

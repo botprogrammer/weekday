@@ -4,7 +4,6 @@ import JobDetailsModal from './JobDetailsModal'
 import { useState } from 'react'
 
 const blurButtonStyles = {
-  height: 200,
   overflow: 'hidden',
   position: 'relative',
   '&:after': {
@@ -32,6 +31,7 @@ export default function AboutCompany({ data }) {
       <ExapndableDescription
         description={jobDetailsFromCompany}
         setOpen={setOpen}
+        minExp={minExp}
       />
       <JobDetailsModal
         open={open}
@@ -43,17 +43,19 @@ export default function AboutCompany({ data }) {
           <Typography letterSpacing={1} fontWeight={500} color='grey'>
             Minimum experience
           </Typography>
-          <Typography>{minExp}</Typography>
+          <Typography>{minExp} years</Typography>
         </Box>
       ) : null}
     </Box>
   )
 }
 
-function ExapndableDescription({ description, setOpen }) {
+function ExapndableDescription({ description, setOpen, minExp }) {
   return (
     <Box sx={{ position: 'relative' }}>
-      <Box sx={blurButtonStyles}>{description}</Box>
+      <Box sx={{ ...blurButtonStyles, height: minExp ? 200 : 270 }}>
+        {description}
+      </Box>
       <Button
         variant='text'
         fullWidth

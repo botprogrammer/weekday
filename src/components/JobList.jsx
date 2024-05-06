@@ -10,12 +10,12 @@ export default function JobList({ jobData, getData }) {
     <InfiniteScroll
       dataLength={jobData.jobs.length}
       next={getData}
-      hasMore={jobData.totalCount > jobData.jobs.length}
+      hasMore={jobData.totalCount > jobData.loaded}
       loader={<Loader />}
       scrollThreshold={1}
       endMessage={
-        <Typography fontWeight={700}>
-          <b>Yay! You have seen it all</b>
+        <Typography variant='h6' textAlign='center'>
+          That is all for now!
         </Typography>
       }
     >

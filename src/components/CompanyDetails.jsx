@@ -1,12 +1,17 @@
+/* eslint-disable react/prop-types */
 import { Box, Grid, Typography } from '@mui/material'
+import { getJobRole, getLocation } from '../utils/getFormattedData'
 
-export default function CompanyDetails() {
+export default function CompanyDetails({ data }) {
+  const { companyName, location, jobRole, logoUrl, minJdSalary, maxJdSalary } =
+    data
   return (
     <Box className='company_info' my={2}>
       <Grid container gap={2}>
         <img
+          alt={`${companyName} logo`}
           style={{ width: '5rem', height: '5rem' }}
-          src='https://logo.clearbit.com/ebay.com'
+          src={logoUrl}
         />
         <Box>
           <Typography
@@ -15,16 +20,19 @@ export default function CompanyDetails() {
             fontWeight='bold'
             letterSpacing={1}
           >
-            Apple
+            {companyName}
           </Typography>
           <Typography variant='body1' my={0.5}>
-            Backend Engineer
+            {getJobRole(jobRole)}
           </Typography>
-          <Typography variant='body2'>Bangalore</Typography>
+          <Typography variant='body2'>{getLocation(location)}</Typography>
         </Box>
       </Grid>
       <Typography variant='body1' mt={2} color='#555555'>
-        Estimated Salary: ₹18 - 35 LPA
+        Estimated Salary:{' '}
+        {minJdSalary
+          ? `₹${minJdSalary} - ${maxJdSalary} LPA`
+          : `₹${maxJdSalary} LPA`}
       </Typography>
     </Box>
   )

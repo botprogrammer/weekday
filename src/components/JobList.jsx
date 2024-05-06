@@ -19,10 +19,11 @@ export default function JobList({ jobData, getData }) {
       }
     >
       <Grid container spacing={4} py={4}>
-        {jobData.jobs.map(({ jdUid }) => {
+        {jobData.jobs.map((jobItem) => {
+          const { jdUid } = jobItem
           return (
             <Grid key={jdUid} item xs={12} sm={6} md={4} lg={3}>
-              <JobCard />
+              <JobCard data={jobItem} />
             </Grid>
           )
         })}

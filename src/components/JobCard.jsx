@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Button,
   Card,
@@ -12,7 +13,7 @@ import AboutCompany from './AboutCompany'
 import LightningIcon from './svg/LightningIcon'
 import HourglassIcon from './svg/HourglassIcon'
 
-export default function JobCard() {
+export default function JobCard({ data }) {
   return (
     <Card>
       <CardContent>
@@ -32,8 +33,8 @@ export default function JobCard() {
             </Grid>
           }
         />
-        <CompanyDetails />
-        <AboutCompany />
+        <CompanyDetails data={data} />
+        <AboutCompany data={data} />
       </CardContent>
       <CardActions>
         <Grid container flexDirection='column' gap={2}>

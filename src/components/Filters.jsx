@@ -9,7 +9,7 @@ import {
   TECH_STACK
 } from '../constants/filters'
 
-export default function Navbar({ setFilters }) {
+export default function Navbar({ setFilters, filters }) {
   return (
     <Grid container gap={2}>
       <Autocomplete
@@ -19,12 +19,20 @@ export default function Navbar({ setFilters }) {
             width: '6rem !important'
           }
         }}
-        onChange={(event, value) =>
-          setFilters((prev) => ({
-            ...prev,
-            roles: value.map((item) => item.value)
-          }))
-        }
+        onChange={(event, value) => {
+          if (value.length > 0) {
+            setFilters((prev) => ({
+              ...prev,
+              roles: value.map((item) => item.value)
+            }))
+          } else {
+            const allFilters = { ...filters }
+
+            delete allFilters['roles']
+
+            setFilters(allFilters)
+          }
+        }}
         multiple
         options={ROLES}
         getOptionLabel={(option) => option.label}
@@ -59,12 +67,20 @@ export default function Navbar({ setFilters }) {
             width: '6rem !important'
           }
         }}
-        onChange={(event, value) =>
-          setFilters((prev) => ({
-            ...prev,
-            experience: [value.value]
-          }))
-        }
+        onChange={(event, value) => {
+          if (value) {
+            setFilters((prev) => ({
+              ...prev,
+              experience: value.value
+            }))
+          } else {
+            const allFilters = { ...filters }
+
+            delete allFilters['experience']
+
+            setFilters(allFilters)
+          }
+        }}
         options={EXPERIENCE}
         getOptionLabel={(option) => option.label}
         renderInput={(params) => (
@@ -79,12 +95,20 @@ export default function Navbar({ setFilters }) {
             width: '6rem !important'
           }
         }}
-        onChange={(event, value) =>
-          setFilters((prev) => ({
-            ...prev,
-            location: value.map((item) => item.value)
-          }))
-        }
+        onChange={(event, value) => {
+          if (value.length > 0) {
+            setFilters((prev) => ({
+              ...prev,
+              location: value.map((item) => item.value)
+            }))
+          } else {
+            const allFilters = { ...filters }
+
+            delete allFilters['location']
+
+            setFilters(allFilters)
+          }
+        }}
         multiple
         options={LOCATION}
         getOptionLabel={(option) => option.label}
@@ -145,12 +169,20 @@ export default function Navbar({ setFilters }) {
         size='small'
         placeholder='Search company name'
         sx={{ border: '1px solid grey', borderRadius: 1 }}
-        onChange={({ target: { value } }) =>
-          setFilters((prev) => ({
-            ...prev,
-            companyName: value
-          }))
-        }
+        onChange={(event) => {
+          if (event.target.value) {
+            setFilters((prev) => ({
+              ...prev,
+              companyName: event.target.value
+            }))
+          } else {
+            const allFilters = { ...filters }
+
+            delete allFilters['companyName']
+
+            setFilters(allFilters)
+          }
+        }}
       />
     </Grid>
   )

@@ -55,18 +55,23 @@ export default function Home() {
   }, [filters, jobData.jobs, offset])
 
   useEffect(() => {
-    const hasFilters = Object.keys(filters).length > 0
+    const hasFilters = Object.values(filters).length > 0
 
     if (hasFilters) {
       setJobData((prev) => ({
         ...prev,
         jobs: filterJobs(filters, prev.allJobs)
       }))
+    } else {
+      setJobData((prev) => ({
+        ...prev,
+        jobs: prev.allJobs
+      }))
     }
   }, [filters])
 
   useEffect(() => {
-    if (!jobData.jobs.length) {
+    if (!jobData.allJobs.length) {
       getData()
     }
   }, [getData, jobData])

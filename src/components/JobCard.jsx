@@ -10,12 +10,28 @@ import {
 import CompanyDetails from './CompanyDetails'
 import AboutCompany from './AboutCompany'
 import LightningIcon from './svg/LightningIcon'
+import HourglassIcon from './svg/HourglassIcon'
 
 export default function JobCard() {
   return (
     <Card>
       <CardContent>
-        <Chip variant='outlined' label='Posted 13 days ago' />
+        <Chip
+          variant='outlined'
+          label={
+            <Grid
+              container
+              alignItems='center'
+              justifyContent='center'
+              gap={0.5}
+            >
+              <HourglassIcon width={12} />
+              <Typography variant='subtitle2' fontSize={10}>
+                Posted 13 days ago
+              </Typography>
+            </Grid>
+          }
+        />
         <CompanyDetails />
         <AboutCompany />
       </CardContent>

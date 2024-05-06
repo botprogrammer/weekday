@@ -1,5 +1,4 @@
 import ArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import CrossIcon from '../../components/svg/CrossIcon'
 
 // ==============================|| OVERRIDES - AUTOCOMPLETE ||============================== //
 
@@ -7,10 +6,7 @@ export default function Autocomplete() {
   return {
     MuiAutocomplete: {
       defaultProps: {
-        popupIcon: <ArrowDownIcon />,
-        ChipProps: {
-          deleteIcon: <CrossIcon />
-        }
+        popupIcon: <ArrowDownIcon />
       },
       styleOverrides: {
         root: {

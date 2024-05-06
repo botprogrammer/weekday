@@ -11,6 +11,9 @@ export default function Button(theme) {
       styleOverrides: {
         root: {
           boxShadow: 'none',
+          textTransform: 'none',
+          borderRadius: 8,
+          padding: '0.75rem 0',
           '&:hover': {
             cursor: 'pointer',
             boxShadow: 'none'
@@ -19,6 +22,7 @@ export default function Button(theme) {
         contained: {
           backgroundColor: button.primary,
           color: '#222222',
+          fontWeight: 'bold',
           '&:hover': {
             backgroundColor: button.primary,
             color: '#222222'

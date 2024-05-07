@@ -12,7 +12,7 @@ export default function JobList({ jobData, getData }) {
       next={getData}
       hasMore={jobData.totalCount > jobData.loaded}
       loader={<Loader />}
-      scrollThreshold={1}
+      scrollThreshold={0.9}
       endMessage={
         <Typography variant='h6' textAlign='center'>
           That is all for now!
